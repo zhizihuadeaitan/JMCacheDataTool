@@ -9,16 +9,13 @@ Setup
 2.`touch Podfile` 创建了Podfile文件
 
 3.`open -e Podfile` 打开Podfile文件
+4. Add the pod `TTCounterLabel` to your [Podfile](https://github.com/CocoaPods/CocoaPods/wiki/A-Podfile).
 
-
-4.编辑.
-
-        platform :ios, '9.1'
-        target '项目名称' do
-        pod 'TTCacheDataTool', '~> 1.0.2'
-        end
+        platform :ios
+        pod 'TTCounterLabel'
         
-  
+
+
   
 5.`pod install` 更新pods库
 
