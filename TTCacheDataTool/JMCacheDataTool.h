@@ -15,31 +15,6 @@
 @interface JMCacheDataTool : NSObject
 
 
-#pragma mark************keychain************
-
-/**
- *  存储数据到Keychain
- *
- *  @param data 数据
- *  @param key  key
- */
-+ (void)saveData:(id)data WithKey:(NSString *)key;
-
-/**
- *  从keychain读取数据
- *
- *  @param key key
- *
- *  @return 数据
- */
-+ (id)readDataWithKey:(NSString *)key;
-
-/**
- * 根据key删除数据
- *
- *  @param key key
- */
-+ (void)deleteDataWithKey:(NSString *)key;
 
 
 #pragma mark ************UserDefaults************
@@ -166,5 +141,5 @@
 + (NSArray *)readLogDataEveryDayDateStr:(NSString *)dateStr;
 
 + (void)sendLogToEmailLog:(id)logStr;
-+ (void)sendLogToQYWechat:(id)logStr;
+
 @end
