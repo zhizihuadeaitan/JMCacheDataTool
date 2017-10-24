@@ -10,6 +10,7 @@ Setup
 
 3.`open -e Podfile` 打开Podfile文件
 
+
 4.
 
         platform :ios, '9.1'
@@ -17,7 +18,8 @@ Setup
         pod 'TTCacheDataTool', '~> 1.0.2'
         end
         
-        
+  
+  
 5.`pod install` 更新pods库
 
 6.打开 `.xcworkspace` 
