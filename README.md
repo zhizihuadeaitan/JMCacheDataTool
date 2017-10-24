@@ -10,14 +10,11 @@ Setup
 
 3.`open -e Podfile` 打开Podfile文件
 
-
 4. 
 
-         platform :ios, '9.1'
-         target '项目名称' do
-         pod 'TTCacheDataTool', '~> 1.0.2'
+        platform :ios
+        pod 'TTCacheDataTool'
         
-
 
   
 5.`pod install` 更新pods库
