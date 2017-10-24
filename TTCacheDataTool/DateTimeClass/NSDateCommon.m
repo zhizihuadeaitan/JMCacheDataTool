@@ -7,7 +7,6 @@
 //
 
 #import "NSDateCommon.h"
-#import "PDKeychainBindings.h"
 
 @implementation NSDateCommon
 
@@ -71,19 +70,7 @@
     NSString *nowtimeStr = [formatter stringFromDate:confromTimesp];
     return nowtimeStr;
 }
-//根据系统时间与服务器时间间隔获取服务器时间戳
-+(NSString *)getTimeStamp:(NSDate *)date
-{
-    NSDate *localDate = [NSDate date]; //获取当前时间
-    
-    NSString *timeSp = [NSString stringWithFormat:@"%ld", (long)[localDate timeIntervalSince1970]]; //转化为UNIX时间戳
-    PDKeychainBindings * bindings = [PDKeychainBindings sharedKeychainBindings];
-    NSString *timeInterval = [bindings objectForKey:KeyChain_TimeInterval];
-    NSString *timeStamp = [NSString stringWithFormat:@"%d",[timeSp intValue] - [timeInterval intValue]];
-    DLog(@"服务器时间戳：%@",timeStamp);
-    
-    return timeStamp;
-}
+
 
 //字符串转为NSDate
 + (NSDate*)datetimeConversionAndDatetimeStr:(NSString *)dateStr datePrecision:(DatePrecision)datePrecision

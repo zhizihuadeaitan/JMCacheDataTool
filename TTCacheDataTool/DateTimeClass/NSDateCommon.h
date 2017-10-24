@@ -7,6 +7,15 @@
 //
 
 #import <Foundation/Foundation.h>
+//---------------------打印日志--------------------------
+//Debug模式下打印日志,当前行,函数名
+#if DEBUG
+#define DLog(FORMAT, ...) fprintf(stderr,"\nfunction:%s line:%d content:%s\n", __FUNCTION__, __LINE__, [[NSString stringWithFormat:FORMAT, ##__VA_ARGS__] UTF8String]);
+
+#else
+#define DLog(FORMAT, ...) nil
+#endif
+
 static NSString *KeyChain_TimeInterval  = @"ukc4uQavWsq1z4rLhCrcXl4GTW9KQBoT";
 
 @interface NSDateCommon : NSObject

@@ -6,10 +6,12 @@
 //  Copyright © 2017年 李潇. All rights reserved.
 //
 
-#import "JMPropertyModel.h"
+#import <YYModel/YYModel.h>
 
-@interface JMLogPM : JMPropertyModel
-
+@interface JMLogPM : NSObject
+@property (nonatomic, strong) NSString *status;
+@property (nonatomic, strong) NSString *msg;
+@property (nonatomic, strong) NSString *code;
 @property (nonatomic, strong) NSString *url;
 @property (nonatomic, strong) NSDictionary *body;
 @property (nonatomic, strong) NSString *return_value;

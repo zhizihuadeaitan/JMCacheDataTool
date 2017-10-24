@@ -7,11 +7,25 @@
 //
 
 #import "JMCacheDataTool.h"
-#import <UIKit/UIKit.h>
-
-
+#import "NSDateCommon.h"
+#import "JMLogPM.h"
 @implementation JMCacheDataTool
 
+#pragma mark************Keychain************
++ (void)saveData:(id)data WithKey:(NSString *)key
+{
+    [[PDKeychainBindings sharedKeychainBindings] setObject:data forKey:key];
+}
+
++ (id)readDataWithKey:(NSString *)key
+{
+    return [[PDKeychainBindings sharedKeychainBindings] objectForKey:key];
+}
+
++ (void)deleteDataWithKey:(NSString *)key
+{
+    [[PDKeychainBindings sharedKeychainBindings] removeObjectForKey:key];
+}
 
 #pragma mark ************UserDefaults************
 + (void)saveDataToUserDefaultsWithData:(id)data withKey:(NSString *)key
@@ -36,6 +50,23 @@
     [defaults removeObjectForKey:key];
     
 }
+#pragma mark**************JMUser**************
++ (JMUser *)readMyUser
+{
+    
+    JMUser *myUser = [NSKeyedUnarchiver unarchiveObjectWithFile:MYUSERPATH];
+    return myUser;
+}
++ (JMUser *)saveMyUser
+{
+    JMUser *myUser = [[JMUser alloc]init];
+    
+    if ([NSKeyedUnarchiver unarchiveObjectWithFile:MYUSERPATH]) {
+        myUser = [NSKeyedUnarchiver unarchiveObjectWithFile:MYUSERPATH];
+    }
+    return myUser;
+}
+
 
 
 
@@ -53,7 +84,7 @@
     [dic setObject:body forKey:@"body"];
     if (reValue) {
         [dic setObject:[reValue yy_modelToJSONString] forKey:@"return_value"];
-        
+
     }
     [dic setObject:url forKey:@"url"];
     NSString *dataStr = [dic yy_modelToJSONString];
@@ -121,7 +152,7 @@
         JMLogPM *pm = [JMLogPM yy_modelWithJSON:str];
         DLog(@"%@",pm.time);
         if(pm)
-            [everyDayLogArr insertObject:pm atIndex:0];
+        [everyDayLogArr insertObject:pm atIndex:0];
         
     }
     return everyDayLogArr;
@@ -155,9 +186,30 @@
     // 打开地址
     NSString *mailPath = [mailUrl stringByAddingPercentEscapesUsingEncoding:NSUTF8StringEncoding];
     [[UIApplication sharedApplication] openURL:[NSURL URLWithString:mailPath]];
-    
-}
 
+}
++ (void)sendLogToQYWechat:(id)logStr
+{
+    JMNetworkTool *networkTool = [JMNetworkTool sharedInstance];
+    NSDictionary *dic  = @{
+                           @"tos":@"zhaoting",
+                           @"content":logStr,
+                           };
+    NSString *url = [NSString stringWithFormat:@"http://172.16.88.7/wechat.php?"];
+    AFHTTPSessionManager *manager = [AFHTTPSessionManager manager];
+    manager.requestSerializer.timeoutInterval = 5.0f;
+    //告诉AFN，支持接受 text/xml 的数据
+    [AFJSONResponseSerializer serializer].acceptableContentTypes = [NSSet setWithObject:@"text/plain"];
+    [networkTool requestWithType:HTTPMethodTypeGet URLString:url Parameters:dic FinishedBlock:^(id responseObject, NSError *error) {
+        [SVProgressHUD dismiss];
+        //将crash日志保存到Document目录下的ExceptionLog文件夹下
+        NSArray *paths = NSSearchPathForDirectoriesInDomains(NSDocumentDirectory, NSUserDomainMask, YES);
+        NSString *logDirectory = [[paths objectAtIndex:0] stringByAppendingPathComponent:@"ExceptionLog"];
+        NSString *logFilePath = [logDirectory stringByAppendingPathComponent:@"UncaughtException.log"];
+
+        [self clearCachesWithFilePath:logFilePath];
+    }];
+}
 
 #pragma mark - 获取沙盒Document的文件目录
 + (NSString *)getDocumentDirectory{
@@ -217,6 +269,33 @@
         return [attrs[NSFileSize] intValue] / (1024.0 * 1024.0);
     }
 }
+
+//+ (float )folderSizeAtPath:(NSString*) folderPath
+//{
+//    // 1.获得文件夹管理者
+//    NSFileManager* manager = [NSFileManager defaultManager];
+//
+//    if (![manager fileExistsAtPath:folderPath]) return 0;
+//    NSEnumerator *childFilesEnumerator = [[manager subpathsAtPath:folderPath] objectEnumerator];
+//    NSString* fileName;
+//    long long folderSize = 0;
+//    while ((fileName = [childFilesEnumerator nextObject]) != nil){
+//        NSString* fileAbsolutePath = [folderPath stringByAppendingPathComponent:fileName];
+//        folderSize += [self fileSizeAtPath:fileAbsolutePath];
+//    }
+//    return folderSize/(1024.0*1024.0);
+//}
+//
+//+ (long long)fileSizeAtPath:(NSString*) filePath
+//{
+//    NSFileManager* manager = [NSFileManager defaultManager];
+//    if ([manager fileExistsAtPath:filePath]){
+//        return [[manager attributesOfItemAtPath:filePath error:nil] fileSize];
+//    }
+//    return 0;
+//}
+
+
 
 #pragma mark - 得到指定目录下的所有文件
 + (NSArray *)getAllFileNames:(NSString *)dirPath{

@@ -7,10 +7,37 @@
 //
 
 #import <Foundation/Foundation.h>
-#import "NSDateCommon.h"
-#import "JMLogPM.h"
-
+#import "PDKeychainBindings.h"
+#import "JMUser.h"
 @interface JMCacheDataTool : NSObject
+
+
+#pragma mark************keychain************
+
+/**
+ *  存储数据到Keychain
+ *
+ *  @param data 数据
+ *  @param key  key
+ */
++ (void)saveData:(id)data WithKey:(NSString *)key;
+
+/**
+ *  从keychain读取数据
+ *
+ *  @param key key
+ *
+ *  @return 数据
+ */
++ (id)readDataWithKey:(NSString *)key;
+
+/**
+ * 根据key删除数据
+ *
+ *  @param key key
+ */
++ (void)deleteDataWithKey:(NSString *)key;
+
 
 #pragma mark ************UserDefaults************
 
@@ -35,6 +62,9 @@
  *  @param key key
  */
 + (void)deleteDataForUserDefaultsWithKey:(NSString *)key;
+
+
+
 
 #pragma mark************SandBox沙盒************
 
@@ -72,6 +102,10 @@
  *  @return 文件目录
  */
 + (NSString *)getTmpDirectory;
+
+#pragma mark**************JMUser**************
++ (JMUser *)readMyUser;
++ (JMUser *)saveMyUser;
 
 #pragma mark**************清理缓存**************
 /**
@@ -129,8 +163,7 @@
  *  获取本地每天的日志记录
  */
 + (NSArray *)readLogDataEveryDayDateStr:(NSString *)dateStr;
-/**
- *  发送message到email
- */
+
 + (void)sendLogToEmailLog:(id)logStr;
++ (void)sendLogToQYWechat:(id)logStr;
 @end
