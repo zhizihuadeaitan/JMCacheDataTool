@@ -1,12 +1,12 @@
 
 Pod::Spec.new do |s|
   s.name         = 'TTCacheDataTool'
-  s.version      = '1.0.2'
+  s.version      = ‘1.0.3’
   s.license          = 'MIT'
   s.homepage     = 'https://github.com/zhizihuadeaitan/TTCacheDataTool'
   s.author             = { 'Cindy' => '493761458@qq.com' }
   s.summary      = '数据存储及展示'
-  s.source       = { :git => 'https://github.com/zhizihuadeaitan/TTCacheDataTool.git', :tag => '1.0.2' }
+  s.source       = { :git => 'https://github.com/zhizihuadeaitan/TTCacheDataTool.git', :tag => ‘1.0.3’ }
   s.source_files  = 'TTCacheDataTool', 'TTCacheDataTool/**/*.{h,m}'
   s.requires_arc = true
   s.platform     = :ios, '9.1'

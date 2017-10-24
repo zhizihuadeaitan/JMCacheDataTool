@@ -3,7 +3,7 @@
 //  SmartCity-BNew
 //
 //  Created by TT_Cindy on 2017/3/31.
-//  Copyright © 2017年 李潇. All rights reserved.
+//  Copyright © 2017年 TTCindy. All rights reserved.
 //
 
 #import <UIKit/UIKit.h>

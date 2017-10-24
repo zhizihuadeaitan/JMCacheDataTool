@@ -2,8 +2,8 @@
 //  NSDateCommon.m
 //  we
 //
-//  Created by zzxcc on 15/7/9.
-//  Copyright (c) 2015年 we. All rights reserved.
+//  Created by TTCindy on 15/7/9.
+//  Copyright (c) 2015年 TTCindy. All rights reserved.
 //
 
 #import "NSDateCommon.h"
@@ -135,13 +135,13 @@
         case DatePrecision_Year:
         {
             precisionStr = @"yyyy";
-
+            
         }
             break;
         case DatePrecision_Month:
         {
             precisionStr = @"yyyy-MM";
-
+            
         }
             break;
             
@@ -153,25 +153,25 @@
         case DatePrecision_Hour:
         {
             precisionStr = @"yyyy-MM-dd HH";
-
+            
         }
             break;
         case DatePrecision_Minutes:
         {
             precisionStr = @"yyyy-MM-dd HH:mm";
-
+            
         }
             break;
         case DatePrecision_Seconds:
         {
             precisionStr = @"yyyy-MM-dd HH:mm:ss";
-
+            
         }
             break;
         case DatePrecision_Ms:
         {
             precisionStr = @"yyyy-MM-dd HH:mm:ss:SSS";
-
+            
         }
             break;
             
@@ -270,23 +270,6 @@
         return NO;
     
 }
-
-
-//- (BOOL)isBetweenFromHour:(NSInteger)fromHour toHour:(NSInteger)toHour
-//{
-//    NSDate *date8 = [self getCustomDateWithHour:8];
-//    NSDate *date23 = [self getCustomDateWithHour:23];
-//
-//    NSDate *currentDate = [NSDate date];
-//
-//    if ([currentDate compare:date8]==NSOrderedDescending && [currentDate compare:date23]==NSOrderedAscending)
-//    {
-//        DLog(@"该时间在 %ld:00-%ld:00 之间！", (long)fromHour, (long)toHour);
-//        return YES;
-//    }
-//    return NO;
-//}
-
 
 //传入的小时和分钟，转成nsdate类型
 + (NSDate *)getCustomDateWithHour:(NSInteger)hour andMinute:(NSInteger)minute{

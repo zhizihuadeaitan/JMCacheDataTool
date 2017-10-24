@@ -2,8 +2,8 @@
 //  NSDateCommon.h
 //  we
 //
-//  Created by zzxcc on 15/7/9.
-//  Copyright (c) 2015年 we. All rights reserved.
+//  Created by TTCindy on 15/7/9.
+//  Copyright (c) 2015年 TTCindy. All rights reserved.
 //
 
 #import <Foundation/Foundation.h>
