@@ -7,6 +7,11 @@
 //
 
 #import <Foundation/Foundation.h>
+
+#import <UIKit/UIKit.h>
+#import "NSDateCommon.h"
+#import "JMLogPM.h"
+
 @interface JMCacheDataTool : NSObject
 
 
