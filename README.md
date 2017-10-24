@@ -11,7 +11,7 @@ Setup
 3.`open -e Podfile` 打开Podfile文件
 
 
-4.编辑Podfile内如.
+4.编辑.
 
         platform :ios, '9.1'
         target '项目名称' do
