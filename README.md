@@ -16,7 +16,6 @@ Setup
          platform :ios, '9.1'
          target '项目名称' do
          pod 'TTCacheDataTool', '~> 1.0.2'
-         end
         
 
 
