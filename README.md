@@ -12,7 +12,7 @@ Setup
 
 
 
-4. 
+4.编辑
 
         platform :ios
         pod 'TTCacheDataTool'
