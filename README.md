@@ -1,46 +1,21 @@
 # TTCacheDataTool
-
-
-//![Alt text](/screenshot.PNG "TTCounterLabel")
-
 Setup
 -----
 
 **Installing with [CocoaPods](http://cocoapods.org)**
+1.$ cd 到项目根目录
+2.$ touch Podfile 创建了Podfile文件
+3.$ open -e Podfile 打开Podfile文件
+4.
 
-If you're unfamiliar with CocoaPods there is a great tutorial [here](http://www.raywenderlich.com/12139/introduction-to-cocoapods) to get you up to speed.
 
-1. In Terminal navigate to the root of your project.
-2. Run 'touch Podfile' to create the Podfile.
-3. Open the Podfile using 'open -e Podfile'
-4. Add the pod `TTCounterLabel` to your [Podfile](https://github.com/CocoaPods/CocoaPods/wiki/A-Podfile).
+        platform :ios, '9.1'
+        target '项目名称' do
+        pod 'TTCacheDataTool', '~> 1.0.2'
+        end
+5.$ pod install 更新pods库
+6. 打开 `.xcworkspace` 
 
-        platform :ios
-        pod 'TTCacheDataTool'
-        
-5. Run `pod install`.
-6. Open your app's `.xcworkspace` file to launch Xcode and start using the control!
-
-**Installing manually from GitHub**
-
-1.  Download the `TTCacheDataTool.h` and `TTCacheDataTool.m` files and add them to your Xcode project.
-2.  `#import TTCacheDataTool.h` wherever you need it.
-3.  Follow the included sample project to get started.
-
-**Running the sample project**
-
-Check out the [sample project](https://github.com/zhizihuadeaitan/TTCacheDataTool) included in the repository. Just open the '.xcworkspace' file in the Sample folder and the project should build correctly.
-
-Usage
------
-
-1. Add a normal Label control to your storyboard
-2. In the Identity Inspector for the label, set the Custom Class to TTCounterLabel
-3. Implement the TTCounterLabelDelegate interface to receive callbacks from the label
-4. Set the label's countDirection to one of kCountDirectionDown or kCountDirectionUp
-5. call [label setStartValue:&lt;time in ms>] to set the start value (important in the case of a downward counter).
-6. Use [label start] and [label stop] to start and stop the counter.
-7. The counter calls back on the contdownDidEnd method on the class that implements TTCounterLabelDelegate. The source parameter will be a reference to the label object that fired the event.
 
 Author(s)
 -------
