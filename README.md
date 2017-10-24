@@ -9,7 +9,7 @@ Setup
 2.`touch Podfile` 创建了Podfile文件
 
 3.`open -e Podfile` 打开Podfile文件
-4. Add the pod `TTCounterLabel` to your [Podfile](https://github.com/CocoaPods/CocoaPods/wiki/A-Podfile).
+4. 
 
         platform :ios
         pod 'TTCounterLabel'
