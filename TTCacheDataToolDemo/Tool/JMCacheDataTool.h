@@ -7,8 +7,6 @@
 //
 
 #import <Foundation/Foundation.h>
-#import "PDKeychainBindings.h"
-#import "JMUser.h"
 @interface JMCacheDataTool : NSObject
 
 
@@ -103,9 +101,7 @@
  */
 + (NSString *)getTmpDirectory;
 
-#pragma mark**************JMUser**************
-+ (JMUser *)readMyUser;
-+ (JMUser *)saveMyUser;
+
 
 #pragma mark**************清理缓存**************
 /**

@@ -114,5 +114,5 @@ typedef NS_ENUM(NSInteger, DateStyle) {
  *  @param date 日期
  *  @return 时间戳str
  */
-+ (NSString *)getTimeStamp:(NSDate *)date;
+//+ (NSString *)getTimeStamp:(NSDate *)date;
 @end

@@ -7,25 +7,8 @@
 //
 
 #import "JMCacheDataTool.h"
-#import "NSDateCommon.h"
-#import "JMLogPM.h"
 @implementation JMCacheDataTool
 
-#pragma mark************Keychain************
-+ (void)saveData:(id)data WithKey:(NSString *)key
-{
-    [[PDKeychainBindings sharedKeychainBindings] setObject:data forKey:key];
-}
-
-+ (id)readDataWithKey:(NSString *)key
-{
-    return [[PDKeychainBindings sharedKeychainBindings] objectForKey:key];
-}
-
-+ (void)deleteDataWithKey:(NSString *)key
-{
-    [[PDKeychainBindings sharedKeychainBindings] removeObjectForKey:key];
-}
 
 #pragma mark ************UserDefaults************
 + (void)saveDataToUserDefaultsWithData:(id)data withKey:(NSString *)key
@@ -50,24 +33,6 @@
     [defaults removeObjectForKey:key];
     
 }
-#pragma mark**************JMUser**************
-+ (JMUser *)readMyUser
-{
-    
-    JMUser *myUser = [NSKeyedUnarchiver unarchiveObjectWithFile:MYUSERPATH];
-    return myUser;
-}
-+ (JMUser *)saveMyUser
-{
-    JMUser *myUser = [[JMUser alloc]init];
-    
-    if ([NSKeyedUnarchiver unarchiveObjectWithFile:MYUSERPATH]) {
-        myUser = [NSKeyedUnarchiver unarchiveObjectWithFile:MYUSERPATH];
-    }
-    return myUser;
-}
-
-
 
 
 #pragma mark - 存储Log到本地  JMSaveLogDataTool
@@ -187,28 +152,6 @@
     NSString *mailPath = [mailUrl stringByAddingPercentEscapesUsingEncoding:NSUTF8StringEncoding];
     [[UIApplication sharedApplication] openURL:[NSURL URLWithString:mailPath]];
 
-}
-+ (void)sendLogToQYWechat:(id)logStr
-{
-    JMNetworkTool *networkTool = [JMNetworkTool sharedInstance];
-    NSDictionary *dic  = @{
-                           @"tos":@"zhaoting",
-                           @"content":logStr,
-                           };
-    NSString *url = [NSString stringWithFormat:@"http://172.16.88.7/wechat.php?"];
-    AFHTTPSessionManager *manager = [AFHTTPSessionManager manager];
-    manager.requestSerializer.timeoutInterval = 5.0f;
-    //告诉AFN，支持接受 text/xml 的数据
-    [AFJSONResponseSerializer serializer].acceptableContentTypes = [NSSet setWithObject:@"text/plain"];
-    [networkTool requestWithType:HTTPMethodTypeGet URLString:url Parameters:dic FinishedBlock:^(id responseObject, NSError *error) {
-        [SVProgressHUD dismiss];
-        //将crash日志保存到Document目录下的ExceptionLog文件夹下
-        NSArray *paths = NSSearchPathForDirectoriesInDomains(NSDocumentDirectory, NSUserDomainMask, YES);
-        NSString *logDirectory = [[paths objectAtIndex:0] stringByAppendingPathComponent:@"ExceptionLog"];
-        NSString *logFilePath = [logDirectory stringByAppendingPathComponent:@"UncaughtException.log"];
-
-        [self clearCachesWithFilePath:logFilePath];
-    }];
 }
 
 #pragma mark - 获取沙盒Document的文件目录
