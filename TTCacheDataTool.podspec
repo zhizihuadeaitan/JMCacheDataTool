@@ -8,21 +8,22 @@
 Pod::Spec.new do |s|
   s.name         = "TTCacheDataTool"
   s.version      = "1.0.0"
-  s.summary      = "A short description of TTCacheDataTool."
+  s.summary      = "SaveData"
   s.description  = <<-DESC
+                   数据存储及展示。
                    DESC
-  s.homepage     = "http://EXAMPLE/TTCacheDataTool"
+  s.homepage     = "https://github.com/zhizihuadeaitan/TTCacheDataTool"
   # s.screenshots  = "www.example.com/screenshots_1.gif", "www.example.com/screenshots_2.gif"
   s.license          = 'MIT'
 s.author             = { "Cindy" => "493761458@qq.com" }
   # Or just: s.author    = "Cindy"
   # s.authors            = { "Cindy" => "493761458@qq.com" }
-  # s.social_media_url   = "http://twitter.com/Cindy"
+   s.social_media_url   = "http://twitter.com/Cindy"
 
-  s.source       = { :git => "http://EXAMPLE/TTCacheDataTool.git", :tag => "#{s.version}" }
+  s.source       = { :git => "https://github.com/zhizihuadeaitan/TTCacheDataTool.git", :tag => "#{s.version}" }
 
    # s.platform     = :ios
-  # s.platform     = :ios, "5.0"
+   s.platform     = :ios, "9.1"
 
   #  When using multiple platforms
   # s.ios.deployment_target = "5.0"
@@ -36,7 +37,11 @@ s.author             = { "Cindy" => "493761458@qq.com" }
   # s.public_header_files = "Classes/**/*.h"
   # s.resources = 'Assets'
   # s.framework  = "SomeFramework"
-  s.frameworks = 'AFNetworking', 'YYModel','UIKit','SDAutoLayout'
+  s.frameworks = "UIKit"
+  #s.dependency 'AFNetworking', '~> 2.3' 
+  s.dependency 'YYModel', '~> 1.0.3'
+  s.dependency 'SDAutoLayout', '~> 1.3'
+  s.dependency 'AFNetworking', '~> 3.1.0'
 
   # s.library   = "iconv"
   # s.libraries = "iconv", "xml2"
