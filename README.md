@@ -9,10 +9,14 @@ Setup
 2.`touch Podfile` 创建了Podfile文件
 
 3.`open -e Podfile` 打开Podfile文件
+
+
 4. 
 
-        platform :ios
-        pod 'TTCounterLabel'
+         platform :ios, '9.1'
+         target '项目名称' do
+         pod 'TTCacheDataTool', '~> 1.0.2'
+         end
         
 
 
